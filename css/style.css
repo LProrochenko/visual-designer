@@ -37,7 +37,8 @@ body {
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.7rem;
+  padding: 4.4rem 2.5rem;
+  text-align: center;
 }
 .button {
    background-color: #000;
@@ -48,6 +49,12 @@ body {
    text-decoration: none;
    padding: 2.5rem 6.7rem;
    display: inline-block;
+}
+.section_title {
+  font-size: 3.3rem;
+  font-weight: 600;
+  line-height: 4.4rem;
+  margin-bottom: 4.4rem;
 }
 /* Header styles start */
 .header__wrapper {
@@ -132,3 +139,23 @@ body {
    margin-bottom: 1.3rem;
 }
 /* Skills styles end */
+/* Latest styles start */
+
+.latest__works {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.latest__work {
+  text-align: left;
+}
+.latest__work-pic {
+  margin-bottom: 2.5rem;
+}
+.latest__work-title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 3.1rem;
+  margin-bottom: 0.9rem;
+}
+/* Latest styles end */
