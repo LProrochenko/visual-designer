@@ -30,6 +30,7 @@ body {
   font-family: 'Epilogue', sans-serif;
   font-weight: 400;
   font-size: 1.7rem;
+  line-height: 2.8rem;
   color: #2d2d2d;
   height: 100vh;
 }
@@ -38,12 +39,21 @@ body {
   margin: 0 auto;
   padding: 0 1.7rem;
 }
+.button {
+   background-color: #000;
+   color: #fff;
+   font-size: 2.1rem;
+   font-weight: 600;
+   line-height: 3.1rem;
+   text-decoration: none;
+   padding: 2.5rem 6.7rem;
+}
 /* Header styles start */
 .header__wrapper {
   min-height: 78px;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2.5rem 1.7rem;
+  padding: 2.5rem 4.4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -70,3 +80,29 @@ body {
   opacity: 0.75;
 }
 /* Header styles end */
+/* Intro styles start */
+.intro__wrapper {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 4.4rem 5.8rem;
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   align-items: center;
+}
+.intro__title {
+   font-size: 7.1rem;
+   font-weight: 600;
+   line-height: 7.3rem;
+   margin-bottom: 2.5rem;
+}
+.intro__subtitle{
+   font-size: 2.1rem;
+   font-weight: 600;
+   line-height: 3.1rem;
+   margin-bottom: 2.5rem;
+}
+.intro__text {
+   margin-bottom: 5rem;
+}
+/* Intro styles end */
