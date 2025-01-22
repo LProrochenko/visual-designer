@@ -1,0 +1,30 @@
+/* Fonts */
+
+@font-face {
+   font-display: swap; 
+   font-family: 'Epilogue';
+   font-style: normal;
+   font-weight: 400;
+   src: url('../fonts/epilogue-v17-latin-regular.woff2') format('woff2');
+ }
+
+ @font-face {
+   font-display: swap; 
+   font-family: 'Epilogue';
+   font-style: normal;
+   font-weight: 600;
+   src: url('../fonts/epilogue-v17-latin-600.woff2') format('woff2'); 
+ }
+
+ /* Global styles */
+html {
+   box-sizing: border-box;
+   font-size: 60%;
+ }
+ 
+body {
+   font-family: 'Epilogue', sans-serif;
+   font-weight: 400;
+   font-size: 1.7rem;
+   height: 100vh;
+}
