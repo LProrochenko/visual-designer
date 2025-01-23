@@ -34,6 +34,10 @@ body {
   color: #2d2d2d;
   height: 100vh;
 }
+/* img{
+  max-width: 100%;
+  height: auto;
+} */
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
@@ -140,7 +144,6 @@ body {
 }
 /* Skills styles end */
 /* Latest styles start */
-
 .latest__works {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -159,3 +162,41 @@ body {
   margin-bottom: 0.9rem;
 }
 /* Latest styles end */
+/* Testimonial styles start */
+.testimonial__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.testimonial__card {
+  background-color: #f3f3f3;
+  min-height: 34.4rem;
+  padding: 4.4rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.testimonial__text {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 3.1rem;
+  margin-bottom: 1.1rem;
+}
+.testimonial__rating-author{
+  display: flex;
+  align-items:start;
+}
+.testimonial__image {
+  object-fit: none;
+  margin-right: 1.7rem;
+}
+.testimonial__rating{
+  margin-bottom: 1.1rem;
+}
+.testimonial__author-name {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 3.1rem;
+}
+/* Testimonial styles end */
