@@ -22,14 +22,16 @@ html {
   box-sizing: border-box;
 }
 
-*,*::after,*::before{
+*,
+*::after,
+*::before {
   box-sizing: inherit;
 }
 
 body {
   font-family: 'Epilogue', sans-serif;
   font-weight: 400;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 2.8rem;
   color: #2d2d2d;
   height: 100vh;
@@ -42,17 +44,17 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 4.4rem 2.5rem;
-  text-align: center;
+  /* text-align: center; */
 }
 .button {
-   background-color: #000;
-   color: #fff;
-   font-size: 2.1rem;
-   font-weight: 600;
-   line-height: 3.1rem;
-   text-decoration: none;
-   padding: 2.5rem 6.7rem;
-   display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 3.1rem;
+  text-decoration: none;
+  padding: 2.5rem 6.7rem;
+  display: inline-block;
 }
 .section_title {
   font-size: 3.3rem;
@@ -94,56 +96,59 @@ body {
 /* Header styles end */
 /* Intro styles start */
 .intro__wrapper {
-   max-width: 1280px;
-   margin: 0 auto;
-   padding: 4.4rem 5.8rem;
-   display: flex;
-   flex-wrap: nowrap;
-   justify-content: space-between;
-   align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4.4rem 5.8rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 .intro__title {
-   font-size: 7.1rem;
-   font-weight: 600;
-   line-height: 7.3rem;
-   margin-bottom: 2.5rem;
+  font-size: 7.1rem;
+  font-weight: 600;
+  line-height: 7.3rem;
+  margin-bottom: 2.5rem;
 }
-.intro__subtitle{
-   font-size: 2.1rem;
-   font-weight: 600;
-   line-height: 3.1rem;
-   margin-bottom: 2.5rem;
+.intro__subtitle {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 3.1rem;
+  margin-bottom: 2.5rem;
 }
 .intro__text {
-   margin-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 /* Intro styles end */
 /* Skills styles start */
 .skills__wrapper {
-   max-width: 1280px;
-   margin: 0 auto;
-   padding: 4.4rem 2.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4.4rem 2.5rem;
 }
 .skills__cards {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 4.4rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4.4rem 2.5rem;
 }
 .skills__card {
-   padding: 6.7rem 4.4rem;
-   display: flex;
+  padding: 6.7rem 4.4rem;
+  display: flex;
 }
 .skills__card-pic {
-   margin-right: 4.4rem;
+  margin-right: 4.4rem;
 }
 .skills__card-title {
-   font-size: 2.8rem;
-   font-weight: 600;
-   line-height: 4.4rem;
-   margin-bottom: 1.3rem;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 4.4rem;
+  margin-bottom: 1.3rem;
 }
 /* Skills styles end */
 /* Latest styles start */
+.latest__wrapper {
+  text-align: center;
+}
 .latest__works {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -163,6 +168,9 @@ body {
 }
 /* Latest styles end */
 /* Testimonial styles start */
+.testimonial__wrapper {
+  text-align: center;
+}
 .testimonial__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -183,15 +191,15 @@ body {
   line-height: 3.1rem;
   margin-bottom: 1.1rem;
 }
-.testimonial__rating-author{
+.testimonial__rating-author {
   display: flex;
-  align-items:start;
+  align-items: start;
 }
 .testimonial__image {
   object-fit: none;
   margin-right: 1.7rem;
 }
-.testimonial__rating{
+.testimonial__rating {
   margin-bottom: 1.1rem;
 }
 .testimonial__author-name {
@@ -200,3 +208,49 @@ body {
   line-height: 3.1rem;
 }
 /* Testimonial styles end */
+/* Footer styles star */
+.footer__title {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+.footer__containar {
+  display: flex;
+  justify-content: space-between;
+  /* flex-wrap: nowrap; */
+}
+.footer__containar-left {
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+}
+.footer__desc {
+  margin-bottom: 4.4rem;
+}
+.footer__social-list {
+  display: flex;
+  align-items: center;
+}
+.footer__social-item {
+  margin-right: 2.5rem;
+}
+.footer__social-item:last-child {
+  margin-right: 0;
+}
+.footer__container-right {
+  width: 42%;
+}
+.contact-form__field {
+ display: block;
+ width: 100%;
+ background-color: #f3f3f3;
+ border: none;
+ padding: 1.7rem 2.5rem;
+ line-height: 2.8rem;
+}
+.contact-form__field:first-child {
+  margin-bottom: 1.2rem;
+}
+.contact-form__field:last-of-type {
+  margin-bottom: 2.5rem;
+}
+/* Footer styles star */
