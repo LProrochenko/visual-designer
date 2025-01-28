@@ -98,7 +98,7 @@ body {
 .intro__wrapper {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4.4rem 5.8rem;
+  padding: 4.4rem 4.4rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -119,6 +119,77 @@ body {
 .intro__text {
   margin-bottom: 5rem;
 }
+/* Слайдер */
+ .slider {
+  max-width: 130rem;
+  height: 59rem;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* display: flex; 
+  align-items: center; 
+  justify-content: center; */
+  transition: transform 1s;
+}
+.slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  border: none; 
+  background: none;
+  font-family: inherit;
+  color: #2d2d2d;
+  font-size: 6rem;
+}
+
+.slider__btn-left {
+  left: 5%;
+  transform: translate(-50%, -50%);
+}
+
+.slider__btn-right {
+  right: 5%;
+  transform: translate(50%, -50%);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4.4rem;
+}
+
+.dots__dot {
+  padding: 0;
+  border: none;
+  background-color: #2d2d2d;
+  opacity: 0.7;
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50%;
+  margin-right: 1.75rem;
+  transition: all 0.5s;
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot-active {
+  background-color: #000;
+  opacity: 1;
+} 
 /* Intro styles end */
 /* Skills styles start */
 .skills__wrapper {
@@ -240,12 +311,12 @@ body {
   width: 42%;
 }
 .contact-form__field {
- display: block;
- width: 100%;
- background-color: #f3f3f3;
- border: none;
- padding: 1.7rem 2.5rem;
- line-height: 2.8rem;
+  display: block;
+  width: 100%;
+  background-color: #f3f3f3;
+  border: none;
+  padding: 1.7rem 2.5rem;
+  line-height: 2.8rem;
 }
 .contact-form__field:first-child {
   margin-bottom: 1.2rem;
