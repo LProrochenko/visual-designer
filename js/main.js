@@ -4,6 +4,8 @@ const slides = document.querySelectorAll('.slide');
 const btnLeft = document.querySelector('.slider__btn-left');
 const btnRight = document.querySelector('.slider__btn-right');
 const dotContainer = document.querySelector('.dots');
+const lazyImages = document.querySelectorAll('img[data-src]');
+
 
 //Slider
 let currentSlide = 0;
@@ -66,3 +68,21 @@ dotContainer.addEventListener('click', function (e) {
     activateCurrentDot(slideNumber);
   }
 });
+///Lazy loading
+const loadImage = function (entries, observer) {
+  entries.forEach(entry =>{
+    if(!entry.isIntersecting) return;
+    entry.target.src = entry.target.dataset.src;
+    entry.target.addEventListener('load', function () {
+      entry.target.classList.remove('lazy-img');
+    });
+    observer.unobserve(entry.target);
+    });
+};
+
+const lazyImagesObserver = new IntersectionObserver(loadImage, {
+  root: null,
+  threshold: 0.7,
+});
+
+lazyImages.forEach(image => lazyImagesObserver.observe(image));
