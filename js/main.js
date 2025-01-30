@@ -105,7 +105,16 @@ const loadImage = function (entries, observer) {
 
 const lazyImagesObserver = new IntersectionObserver(loadImage, {
   root: null,
-  threshold: 0.7,
+  threshold: 0.1,
 });
 
 lazyImages.forEach(image => lazyImagesObserver.observe(image));
+
+// Smooth page navigation
+document.querySelector('.header__list').addEventListener('click', function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains('header__link')) {
+    const href = e.target.getAttribute('href');
+    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+   }
+});
