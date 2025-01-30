@@ -6,8 +6,11 @@ const btnLeft = document.querySelector('.slider__btn-left');
 const btnRight = document.querySelector('.slider__btn-right');
 const dotContainer = document.querySelector('.dots');
 const lazyImages = document.querySelectorAll('img[data-src]');
-///Sticky navigation
+const allSections = document.querySelectorAll('.section');
+const btnScrollTo = document.querySelector('.button_scroll-to');
+const footer = document.querySelector('.footer');
 
+///Sticky navigation
 const headerHeight = header.getBoundingClientRect().height;
 const getStickyHeader = function (entries) {
   const entry = entries[0];
@@ -113,8 +116,32 @@ lazyImages.forEach(image => lazyImagesObserver.observe(image));
 // Smooth page navigation
 document.querySelector('.header__list').addEventListener('click', function (e) {
   e.preventDefault();
+
   if (e.target.classList.contains('header__link')) {
     const href = e.target.getAttribute('href');
     document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-   }
+  }
+});
+
+// Smooth appearance of section
+const appearanceSection = function (entries, observer) {
+  const entry = entries[0];
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section-hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(appearanceSection, {
+  root: null,
+  threshold: 0.4,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section-hidden');
+});
+
+// Page scroll
+btnScrollTo.addEventListener('click', function (e) {
+  footer.scrollIntoView({ behavior: 'smooth' });
 });
