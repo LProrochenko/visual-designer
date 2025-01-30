@@ -59,7 +59,13 @@ img {
   padding: 2.5rem 6.7rem;
   display: inline-block;
 }
-
+.section {
+  transition: transform 1s, opacity 1s;
+}
+.section-hidden {
+  opacity: 0;
+  transform: translateY(9rem);
+}
 .section_title {
   font-size: 3.3rem;
   font-weight: 600;
@@ -67,7 +73,6 @@ img {
   margin-bottom: 4.4rem;
 }
 /* Header styles start */
-
 .header__wrapper {
   min-height: 78px;
   max-width: 1280px;
@@ -84,6 +89,15 @@ img {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 11;
+  animation: move 0.5s ease-out;
+}
+@keyframes move {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 .header__list {
   display: flex;
