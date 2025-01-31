@@ -11,7 +11,7 @@ const btnScrollTo = document.querySelector('.button_scroll-to');
 const footer = document.querySelector('.footer');
 
 ///Sticky navigation
-const headerHeight = header.getBoundingClientRect().height;
+const headerHeight = header.getBoundingClientRect().height || 0;
 const getStickyHeader = function (entries) {
   const entry = entries[0];
 
@@ -119,7 +119,19 @@ document.querySelector('.header__list').addEventListener('click', function (e) {
 
   if (e.target.classList.contains('header__link')) {
     const href = e.target.getAttribute('href');
-    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+    const targetElement = document.querySelector(href);
+
+    if (targetElement) {
+      const targetPosition =
+        window.scrollY === 0
+          ? targetElement.offsetTop - headerHeight - 80
+          : targetElement.offsetTop - 80;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+    }
   }
 });
 
