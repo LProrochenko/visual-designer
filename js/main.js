@@ -122,10 +122,9 @@ document.querySelector('.header__list').addEventListener('click', function (e) {
     const targetElement = document.querySelector(href);
 
     if (targetElement) {
-      const targetPosition =
-        window.scrollY === 0
-          ? targetElement.offsetTop - headerHeight - 80
-          : targetElement.offsetTop - 80;
+      const targetPosition = header.classList.contains('sticky')
+        ? targetElement.offsetTop - 80
+        : targetElement.offsetTop - headerHeight - 80;
 
       window.scrollTo({
         top: targetPosition,
@@ -159,7 +158,7 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 // Navigation links hover animation effect
-const  navLinksHoverAnimation = function (e) {
+const navLinksHoverAnimation = function (e) {
   if (e.target.classList.contains('header__link')) {
     const linkOver = e.target;
     const logo = linkOver.closest('.header').querySelector('img');
@@ -171,7 +170,6 @@ const  navLinksHoverAnimation = function (e) {
       logo.style.opacity = this;
     });
   }
-}
+};
 header.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
 header.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
-
