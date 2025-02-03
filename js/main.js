@@ -157,3 +157,21 @@ allSections.forEach(function (section) {
 btnScrollTo.addEventListener('click', function (e) {
   footer.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Navigation links hover animation effect
+const  navLinksHoverAnimation = function (e) {
+  if (e.target.classList.contains('header__link')) {
+    const linkOver = e.target;
+    const logo = linkOver.closest('.header').querySelector('img');
+    const siblingLinks = linkOver
+      .closest('.header__nav')
+      .querySelectorAll('.header__link');
+    siblingLinks.forEach(el => {
+      if (el !== linkOver) el.style.opacity = this;
+      logo.style.opacity = this;
+    });
+  }
+}
+header.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
+header.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
+

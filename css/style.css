@@ -114,11 +114,7 @@ img {
   line-height: 2.8rem;
   color: #2d2d2d;
 }
-.header__link:hover,
-.header__link:focus,
-.header__link:active {
-  opacity: 0.75;
-}
+
 /* Header styles end */
 /* Intro styles start */
 .intro__wrapper {
