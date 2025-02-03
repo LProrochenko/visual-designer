@@ -38,7 +38,7 @@
     </header>
     <!-- Header end -->
     <!-- Intro starts -->
-    <div class="intro">
+    <div class="intro section">
       <div class="intro__wrapper">
         <div class="intro__info">
           <h4 class="intro__subtitle">Branding | Image making</h4>
@@ -47,7 +47,9 @@
             This is a template Figma file, turned into code using Anima. Learn
             more at AnimaApp.com
           </p>
-          <a href="#" class="button contacts__button">Contact</a>
+          <a href="#" class="button contacts__button button_scroll-to"
+            >Contact</a
+          >
         </div>
         <div class="intro__pic">
           <img
@@ -78,7 +80,7 @@
     </div>
     <!-- Intro ends -->
     <!-- Skills starts -->
-    <section class="skills" id="about">
+    <section class="skills section" id="about">
       <div class="skills__wrapper">
         <div class="skills__cards">
           <div class="skills__card">
@@ -150,7 +152,7 @@
     </section>
     <!-- Skills ends -->
     <!-- Latest works start -->
-    <section class="latest" id="work">
+    <section class="latest section" id="work">
       <div class="latest__wrapper wrapper">
         <h2 class="latest__title section_title">Latest work</h2>
         <div class="latest__works">
@@ -219,7 +221,7 @@
     </section>
     <!-- Latest works end -->
     <!-- Testimonial start -->
-    <section class="testimonial">
+    <section class="testimonial section">
       <div class="testimonial__wrapper wrapper">
         <h2 class="testimonial__title section_title">Testimonial</h2>
         <div class="testimonial__cards">
@@ -426,16 +428,22 @@
             <form class="contact-form">
               <input
                 type="text"
+                minlength="2"
+                maxlength="50"
+                pattern="^[A-Za-zА-Яа-яЁё\s`\-]+$"
                 autocomplete="off"
                 name="name"
+                required
                 class="contact-form__field"
                 placeholder="Name"
+                title="The name can only contain letters, spaces, hyphens, and apostrophes."
               />
               <input
                 type="email"
                 name="email"
                 class="contact-form__field"
                 placeholder="Email"
+                required
               />
               <button type="submit" class="contact-form__submit button">
                 Submit
