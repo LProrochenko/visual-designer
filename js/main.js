@@ -9,6 +9,15 @@ const lazyImages = document.querySelectorAll('img[data-src]');
 const allSections = document.querySelectorAll('.section');
 const btnScrollTo = document.querySelector('.button_scroll-to');
 const footer = document.querySelector('.footer');
+const modal = document.querySelector('.modal');
+const btnContactFormSubmit = document.querySelector(
+  '.contact-form__submit-btn'
+);
+const btnModalSubmit = document.querySelector('.modal__submit-btn');
+const btnModalClose = document.querySelector('.modal__close-btn');
+const contactForm = document.querySelector('.contact-form');
+const spinner = document.querySelector('.spinner');
+const modalContent = document.querySelector('.modal__content');
 
 ///Sticky navigation
 const headerHeight = header.getBoundingClientRect().height || 0;
@@ -173,3 +182,41 @@ const navLinksHoverAnimation = function (e) {
 };
 header.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
 header.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
+
+// Modal window
+const resetForm = function () {
+  if (contactForm) {
+    contactForm.reset();
+  }
+};
+const handleSubmitForm = function (e) {
+  e.preventDefault();
+
+  modal.classList.remove('hidden');
+  spinner.classList.remove('hidden');
+  resetForm();
+  setTimeout(() => {
+    spinner.classList.add('hidden');
+    modalContent.classList.remove('hidden');
+  }, 1500);
+};
+
+const closeModalWindow = function () {
+  modal.classList.add('hidden');
+  modalContent.classList.add('hidden');
+};
+
+contactForm.addEventListener('submit', handleSubmitForm);
+btnModalClose.addEventListener('click', closeModalWindow);
+btnModalSubmit.addEventListener('click', closeModalWindow);
+window.addEventListener('click', function (e) {
+  if (e.target === modal) {
+    closeModalWindow();
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    closeModalWindow();
+  }
+});

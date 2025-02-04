@@ -445,7 +445,7 @@
                 placeholder="Email"
                 required
               />
-              <button type="submit" class="contact-form__submit button">
+              <button type="submit" class="contact-form__submit-btn button">
                 Submit
               </button>
             </form>
@@ -454,5 +454,15 @@
       </div>
     </footer>
     <!-- Footer ends -->
+    <!-- Modal window for contacts sending starts-->
+    <div class="modal hidden">
+      <div class="spinner"></div>
+      <div class="modal__content hidden">
+        <button class="modal__close-btn">&times;</button>
+        <p class="modal__message">Data is sent!</p>
+        <button class="button modal__submit-btn">Ok</button>
+      </div>
+    </div>
+    <!--  Modal window for contacts sending ends -->
   </body>
 </html>
