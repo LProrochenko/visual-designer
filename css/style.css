@@ -36,6 +36,10 @@ body {
   color: #2d2d2d;
   height: 100vh;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 img {
   transition: filter 0.5s;
 }
@@ -58,6 +62,12 @@ img {
   text-decoration: none;
   padding: 2.5rem 6.7rem;
   display: inline-block;
+  border: none;
+  transition: all 0.5s;
+}
+.button:hover,
+.button:focus {
+  background-color: #009379;
 }
 .section {
   transition: transform 1s, opacity 1s;
@@ -249,9 +259,15 @@ img {
 }
 .latest__work {
   text-align: left;
+  overflow: hidden;
 }
 .latest__work-pic {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
   margin-bottom: 2.5rem;
+}
+.latest__work-pic:hover {
+  transform: scale(1.1);
 }
 .latest__work-title {
   font-size: 2.1rem;
@@ -277,6 +293,10 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.testimonial__card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 .testimonial__text {
   font-size: 2.1rem;
@@ -325,6 +345,11 @@ img {
 }
 .footer__social-item {
   margin-right: 2.5rem;
+  transition: opacity 0.3s ease-in-out;
+}
+.footer__social-item:hover,
+.footer__social-item:focus {
+  opacity: 0.55;
 }
 .footer__social-item:last-child {
   margin-right: 0;
