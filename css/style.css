@@ -272,12 +272,18 @@ img {
 }
 .latest__work {
   text-align: left;
+}
+.latest__work-container{
   overflow: hidden;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  aspect-ratio: 16 / 13.4;
 }
 .latest__work-pic {
+  
+  object-fit: cover;
   transition: transform 0.3s ease-in-out;
   will-change: transform;
-  margin-bottom: 2.5rem;
 }
 .latest__work-pic:hover {
   transform: scale(1.1);
@@ -717,7 +723,7 @@ img {
   .skills__cards {
     gap: 0;
   }
-  .skills__card{
+  .skills__card {
     padding: 2.5rem;
   }
   .skills__card-pic {
