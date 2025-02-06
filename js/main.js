@@ -153,7 +153,7 @@ const appearanceSection = function (entries, observer) {
 
 const sectionObserver = new IntersectionObserver(appearanceSection, {
   root: null,
-  threshold: 0.4,
+  threshold: 0.2,
 });
 
 allSections.forEach(function (section) {
