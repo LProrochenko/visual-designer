@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>visual designer</title>
+    <title>Visual Designer</title>
     <script defer src="./js/main.js"></script>
   </head>
   <body>
     <!-- Header start -->
     <header class="header">
       <div class="header__wrapper">
-        <div class="header__logo">
-          <a href="/" class="header__logo-link">
+          <a href="/" class="header__logo">
             <img
               src="./img/Logo.svg"
-              alt="visual designer"
+              alt="Visual Designer"
               class="header__logo-pic"
             />
           </a>
-        </div>
         <nav class="header__nav">
           <ul class="header__list">
             <li class="header__item">
@@ -47,14 +45,14 @@
             This is a template Figma file, turned into code using Anima. Learn
             more at AnimaApp.com
           </p>
-          <a href="#" class="button contacts__button button_scroll-to"
+          <a href="#contact" class="button contacts__button button_scroll-to"
             >Contact</a
           >
         </div>
         <div class="intro__pic">
           <img
-            src="/img/HeaderImage-min.jpg"
-            alt="header image"
+            src="/img/IntroImage-min.jpg"
+            alt="Intro Image"
             class="intro__pic-item"
           />
         </div>
@@ -87,7 +85,7 @@
             <div class="skills__card-pic">
               <img
                 src="/img/Skills Card Icon-1.svg"
-                alt="skills card icon"
+                alt="Product Design"
                 class="skills__card-thumb"
               />
             </div>
@@ -103,7 +101,7 @@
             <div class="skills__card-pic">
               <img
                 src="/img/Skills Card Icon-2.svg"
-                alt="skills card icon"
+                alt="Visual Design"
                 class="skills__card-thumb"
               />
             </div>
@@ -119,7 +117,7 @@
             <div class="skills__card-pic">
               <img
                 src="/img/Skills Card Icon-3.svg"
-                alt="skills card icon"
+                alt="Art Direction"
                 class="skills__card-thumb"
               />
             </div>
@@ -135,7 +133,7 @@
             <div class="skills__card-pic">
               <img
                 src="/img/Skills Card Icon-4.svg"
-                alt="skills card icon"
+                alt="UI/UX"
                 class="skills__card-thumb"
               />
             </div>
@@ -154,7 +152,7 @@
     <!-- Latest works start -->
     <section class="latest section" id="work">
       <div class="latest__wrapper wrapper">
-        <h2 class="latest__title section_title">Latest work</h2>
+        <h2 class="latest__title title">Latest work</h2>
         <div class="latest__works">
           <a href="#" class="latest__work-link">
             <div class="latest__work">
@@ -247,7 +245,7 @@
     <!-- Testimonial start -->
     <section class="testimonial section">
       <div class="testimonial__wrapper wrapper">
-        <h2 class="testimonial__title section_title">Testimonial</h2>
+        <h2 class="testimonial__title title">Testimonial</h2>
         <div class="testimonial__cards">
           <div class="testimonial__card">
             <p class="testimonial__text">
@@ -401,7 +399,7 @@
     <!-- Footer starts -->
     <footer class="footer" id="contact">
       <div class="footer__wrapper wrapper">
-        <h2 class="footer__title section_title">Lets work together</h2>
+        <h2 class="footer__title title">Lets work together</h2>
         <div class="footer__container">
           <div class="footer__container-left">
             <p class="footer__desc">
@@ -410,38 +408,38 @@
               code using Anima. Learn more at AnimaApp.com
             </p>
             <div class="footer__social-list">
-              <a href="/" class="footer__social-item">
+              <a href="#" class="footer__social-item">
                 <img
                   src="/img/discord.svg"
-                  alt="discord"
+                  alt="Discord"
                   class="footer__social-icon"
                 />
               </a>
-              <a href="/" class="footer__social-item">
+              <a href="#" class="footer__social-item">
                 <img
                   src="/img/facebook.svg"
-                  alt="facebook"
+                  alt="Facebook"
                   class="footer__social-icon"
                 />
               </a>
-              <a href="/" class="footer__social-item">
+              <a href="#" class="footer__social-item">
                 <img
                   src="/img/dribbble.svg"
-                  alt="dribble"
+                  alt="Dribble"
                   class="footer__social-icon"
                 />
               </a>
-              <a href="/" class="footer__social-item">
+              <a href="#" class="footer__social-item">
                 <img
                   src="/img/nstagram.svg"
-                  alt="instagram"
+                  alt="Instagram"
                   class="footer__social-icon"
                 />
               </a>
               <a href="/" class="footer__social-item">
                 <img
                   src="/img/behance.svg"
-                  alt="behance"
+                  alt="Behance"
                   class="footer__social-icon"
                 />
               </a>
@@ -451,14 +449,13 @@
             <form class="contact-form">
               <input
                 type="text"
+                name="name"
+                class="contact-form__field"
+                placeholder="Name"
+                required
                 minlength="2"
                 maxlength="50"
                 pattern="^[A-Za-zА-Яа-яЁё\s`\-]+$"
-                autocomplete="off"
-                name="name"
-                required
-                class="contact-form__field"
-                placeholder="Name"
                 title="The name can only contain letters, spaces, hyphens, and apostrophes."
               />
               <input
