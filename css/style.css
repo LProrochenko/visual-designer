@@ -273,8 +273,7 @@ img {
   padding: 6.7rem 4.4rem;
   display: flex;
 }
-.skills__card-thumb {
-  display: block;
+.skills__card-pic {
   margin-right: 4.4rem;
 }
 
@@ -614,7 +613,7 @@ img {
     line-height: 3.4rem;
   }
 
-  .skills__card-thumb {
+  .skills__card-pic {
     margin-right: 1.5rem;
   }
 
@@ -780,7 +779,7 @@ img {
     line-height: 3.4rem;
   }
 
-  .skills__card-thumb {
+  .skills__card-pic {
     margin-right: 1.5rem;
   }
 
@@ -841,14 +840,14 @@ img {
     padding: 2.5rem;
   }
 
-  .skills__card-thumb {
+  .skills__card-pic {
     margin-right: 2.5rem;
   }
 
   .latest__works {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .testimonial__cards {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -21,14 +21,10 @@ const modalContent = document.querySelector('.modal__content');
 
 ///Sticky navigation
 const headerHeight = header.getBoundingClientRect().height || 0;
-const getStickyHeader = function (entries) {
-  const entry = entries[0];
+const getStickyHeader = ([entry]) => {
+  //console.log(entry);
 
-  if (!entry.isIntersecting) {
-    header.classList.add('sticky');
-  } else {
-    header.classList.remove('sticky');
-  }
+  header.classList.toggle('sticky', !entry.isIntersecting);
 };
 
 const headerObserver = new IntersectionObserver(getStickyHeader, {
@@ -38,38 +34,28 @@ const headerObserver = new IntersectionObserver(getStickyHeader, {
 });
 headerObserver.observe(introInfo);
 
-//Slider
+////Slider
 let currentSlide = 0;
-const slideNumber = slides.length;
+const totalSlides = slides.length;
 
-const moveToSlide = function (slide) {
-  slides.forEach((s, index) => {
-    s.style.transform = `translateX(${(index - slide) * 100}%)`;
+const moveToSlide = (slideIndex) => {
+  slides.forEach((s, i) => {
+    s.style.transform = `translateX(${(i - slideIndex) * 100}%)`;
   });
 };
 
-const nextSlide = function () {
-  if (currentSlide === slideNumber - 1) {
-    currentSlide = 0;
-  } else {
-    currentSlide++;
-  }
-  moveToSlide(currentSlide);
-  activateCurrentDot(currentSlide);
+const nextSlide = () => {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateSlide();
 };
 
-const previousSlide = function () {
-  if (currentSlide === 0) {
-    currentSlide = slideNumber - 1;
-  } else {
-    currentSlide--;
-  }
-  moveToSlide(currentSlide);
-  activateCurrentDot(currentSlide);
+const previousSlide = () => {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateSlide();
 };
 
-const createDots = function () {
-  slides.forEach(function (_, index) {
+const createDots = () => {
+  slides.forEach((_, index) => {
     dotContainer.insertAdjacentHTML(
       'beforeend',
       `<button class="dots__dot" data-slide = ${index}></button>`
@@ -77,18 +63,19 @@ const createDots = function () {
   });
 };
 
-const activateCurrentDot = function (slide) {
-  document
-    .querySelectorAll('.dots__dot')
-    .forEach(dot => dot.classList.remove('dots__dot-active'));
-  document
-    .querySelector(`.dots__dot[data-slide="${slide}"]`)
-    .classList.add('dots__dot-active');
+const activateCurrentDot = slide => {
+  document.querySelectorAll('.dots__dot').forEach(dot => {
+    dot.classList.toggle('dots__dot-active', dot.dataset.slide == currentSlide);
+  });
 };
 
-moveToSlide(0);
+const updateSlide = () => {
+  moveToSlide(currentSlide);
+  activateCurrentDot(currentSlide);
+};
+
 createDots();
-activateCurrentDot(0);
+updateSlide();
 
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', previousSlide);
@@ -103,14 +90,19 @@ dotContainer.addEventListener('click', function (e) {
     activateCurrentDot(slideNumber);
   }
 });
+
 ///Lazy loading
 const loadImage = function (entries, observer) {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    entry.target.src = entry.target.dataset.src;
-    entry.target.addEventListener('load', function () {
-      entry.target.classList.remove('lazy-img');
+
+    const image = entry.target;
+    image.src = image.dataset.src;
+
+    image.addEventListener('load', () => {
+      image.classList.remove('lazy-img');
     });
+
     observer.unobserve(entry.target);
   });
 };
@@ -122,90 +114,115 @@ const lazyImagesObserver = new IntersectionObserver(loadImage, {
 
 lazyImages.forEach(image => lazyImagesObserver.observe(image));
 
-// Smooth page navigation
-document.querySelector('.header__list').addEventListener('click', function (e) {
+//// Smooth page navigation
+document.querySelector('.header__list').addEventListener('click', e => {
   e.preventDefault();
 
-  if (e.target.classList.contains('header__link')) {
-    const href = e.target.getAttribute('href');
-    const targetElement = document.querySelector(href);
+  const targetLink = e.target.closest('.header__link');
 
-    if (targetElement) {
-      const targetPosition = header.classList.contains('sticky')
-        ? targetElement.offsetTop - 80
-        : targetElement.offsetTop - headerHeight - 80;
+  if (!targetLink) return;
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth',
-      });
-    }
-  }
+  const href = targetLink.getAttribute('href');
+  const targetElement = document.querySelector(href);
+
+  if (!targetElement) return;
+
+  const isSticky = header.classList.contains('sticky');
+  const offset = isSticky ? 80 : headerHeight + 80;
+  const targetPosition = targetElement.offsetTop - offset;
+
+  window.scrollTo({
+    top: targetPosition,
+    behavior: 'smooth',
+  });
 });
 
-// Smooth appearance of section
-const appearanceSection = function (entries, observer) {
-  const entry = entries[0];
+////Smooth appearance of section
+const handleSectionAppearance = ([entry], observer) => {
   if (!entry.isIntersecting) return;
   entry.target.classList.remove('section-hidden');
   observer.unobserve(entry.target);
 };
 
-const sectionObserver = new IntersectionObserver(appearanceSection, {
+const sectionObserver = new IntersectionObserver(handleSectionAppearance, {
   root: null,
   threshold: 0.2,
 });
 
-allSections.forEach(function (section) {
+allSections.forEach(section => {
   sectionObserver.observe(section);
   section.classList.add('section-hidden');
 });
 
-// Page scroll
+//// Page scroll
 btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault();
   footer.scrollIntoView({ behavior: 'smooth' });
 });
 
+////Navigation links hover effect
+// Utility function to adjust opacity for the links and logo
+const changeOpacity = (target, opacityValue) => {
+  const logo = target.closest('.header').querySelector('img');
+  const siblingLinks = target
+    .closest('.header__nav')
+    .querySelectorAll('.header__link');
+
+  siblingLinks.forEach(link => {
+    if (link !== target) {
+      link.style.opacity = opacityValue;
+    }
+  });
+
+  logo.style.opacity = opacityValue;
+};
+
 // Navigation links hover animation effect
-const navLinksHoverAnimation = function (e) {
+const navLinksHoverAnimation = e => {
   if (e.target.classList.contains('header__link')) {
-    const linkOver = e.target;
-    const logo = linkOver.closest('.header').querySelector('img');
-    const siblingLinks = linkOver
-      .closest('.header__nav')
-      .querySelectorAll('.header__link');
-    siblingLinks.forEach(el => {
-      if (el !== linkOver) el.style.opacity = this;
-      logo.style.opacity = this;
-    });
+    const opacityValue = e.type === 'mouseover' ? 0.4 : 1;
+    changeOpacity(e.target, opacityValue);
   }
 };
-header.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
-header.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
 
-// Modal window
-const resetForm = function () {
+// Event listeners for hover effects
+header.addEventListener('mouseover', navLinksHoverAnimation);
+header.addEventListener('mouseout', navLinksHoverAnimation);
+
+//// Modal window
+// Utility function to toggle class visibility
+const toggleVisibility = (element, className, action) => {
+  element.classList[action](className);
+};
+
+// Reset the contact form
+const resetForm = () => {
   if (contactForm) {
     contactForm.reset();
   }
 };
-const handleSubmitForm = function (e) {
+
+// Handle form submission
+const handleSubmitForm = e => {
   e.preventDefault();
 
-  modal.classList.remove('hidden');
-  spinner.classList.remove('hidden');
+  toggleVisibility(modal, 'hidden', 'remove');
+  toggleVisibility(spinner, 'hidden', 'remove');
   resetForm();
+
   setTimeout(() => {
-    spinner.classList.add('hidden');
-    modalContent.classList.remove('hidden');
+    toggleVisibility(spinner, 'hidden', 'add');
+    toggleVisibility(modalContent, 'hidden', 'remove');
   }, 1500);
 };
 
-const closeModalWindow = function () {
-  modal.classList.add('hidden');
-  modalContent.classList.add('hidden');
+// Close modal window
+const closeModalWindow = () => {
+  toggleVisibility(modal, 'hidden', 'add');
+  toggleVisibility(modalContent, 'hidden', 'add');
 };
 
+// Event listeners
 contactForm.addEventListener('submit', handleSubmitForm);
 btnModalClose.addEventListener('click', closeModalWindow);
 btnModalSubmit.addEventListener('click', closeModalWindow);
@@ -214,7 +231,6 @@ window.addEventListener('click', function (e) {
     closeModalWindow();
   }
 });
-
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeModalWindow();
